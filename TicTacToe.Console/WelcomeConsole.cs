@@ -7,8 +7,9 @@ namespace TicTacToe.ConsoleGame
         public static void Main(string[] args)
         {
             Welcome game = new Welcome();
-            string message = game.WelcomeMassage();
+            string message = game._welcomeMassage;
             Console.WriteLine(message);
+
         }
     }
 }

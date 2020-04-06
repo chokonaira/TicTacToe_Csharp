@@ -10,11 +10,10 @@ namespace TicTacToe.Test
         {
             Welcome game = new Welcome();
 
-            string actual = game.WelcomeMassage();
+            string actual = game._welcomeMassage;
             string expected = "Welcome to Tic Tac Toe!";
 
             Assert.Equal(expected, actual);
-
         }
     }
 }

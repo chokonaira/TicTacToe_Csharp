@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Test/TicTacToe.Test.csproj": {}
+    "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Test/TicTacToe.Test.csproj": {}
   },
   "projects": {
-    "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Test/TicTacToe.Test.csproj": {
+    "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Test/TicTacToe.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Test/TicTacToe.Test.csproj",
+        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Test/TicTacToe.Test.csproj",
         "projectName": "TicTacToe.Test",
-        "projectPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Test/TicTacToe.Test.csproj",
+        "projectPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Test/TicTacToe.Test.csproj",
         "packagesPath": "/Users/henryokonkwo/.nuget/packages/",
-        "outputPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Test/obj/",
+        "outputPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Test/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/henryokonkwo/.config/NuGet/NuGet.Config"
@@ -25,8 +25,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj": {
-                "projectPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj"
+              "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj": {
+                "projectPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj"
               }
             }
           }
@@ -76,14 +76,14 @@
         }
       }
     },
-    "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj": {
+    "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj",
+        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj",
         "projectName": "TicTacToe",
-        "projectPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj",
+        "projectPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj",
         "packagesPath": "/Users/henryokonkwo/.nuget/packages/",
-        "outputPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/obj/",
+        "outputPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/henryokonkwo/.config/NuGet/NuGet.Config"

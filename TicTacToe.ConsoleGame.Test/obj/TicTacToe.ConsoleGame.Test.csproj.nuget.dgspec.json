@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.ConsoleGame.Test/TicTacToe.ConsoleGame.Test.csproj": {}
+    "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.ConsoleGame.Test/TicTacToe.ConsoleGame.Test.csproj": {}
   },
   "projects": {
-    "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj": {
+    "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj",
+        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj",
         "projectName": "TicTacToe.ConsoleGame",
-        "projectPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj",
+        "projectPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj",
         "packagesPath": "/Users/henryokonkwo/.nuget/packages/",
-        "outputPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/obj/",
+        "outputPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Console/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/henryokonkwo/.config/NuGet/NuGet.Config"
@@ -25,8 +25,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj": {
-                "projectPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj"
+              "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj": {
+                "projectPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj"
               }
             }
           }
@@ -58,14 +58,14 @@
         }
       }
     },
-    "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.ConsoleGame.Test/TicTacToe.ConsoleGame.Test.csproj": {
+    "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.ConsoleGame.Test/TicTacToe.ConsoleGame.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.ConsoleGame.Test/TicTacToe.ConsoleGame.Test.csproj",
+        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.ConsoleGame.Test/TicTacToe.ConsoleGame.Test.csproj",
         "projectName": "TicTacToe.ConsoleGame.Test",
-        "projectPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.ConsoleGame.Test/TicTacToe.ConsoleGame.Test.csproj",
+        "projectPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.ConsoleGame.Test/TicTacToe.ConsoleGame.Test.csproj",
         "packagesPath": "/Users/henryokonkwo/.nuget/packages/",
-        "outputPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.ConsoleGame.Test/obj/",
+        "outputPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.ConsoleGame.Test/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/henryokonkwo/.config/NuGet/NuGet.Config"
@@ -79,8 +79,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj": {
-                "projectPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj"
+              "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj": {
+                "projectPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe.Console/TicTacToe.ConsoleGame.csproj"
               }
             }
           }
@@ -130,14 +130,14 @@
         }
       }
     },
-    "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj": {
+    "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj",
+        "projectUniqueName": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj",
         "projectName": "TicTacToe",
-        "projectPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/TicTacToe.csproj",
+        "projectPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/TicTacToe.csproj",
         "packagesPath": "/Users/henryokonkwo/.nuget/packages/",
-        "outputPath": "/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe/obj/",
+        "outputPath": "/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/henryokonkwo/.config/NuGet/NuGet.Config"
