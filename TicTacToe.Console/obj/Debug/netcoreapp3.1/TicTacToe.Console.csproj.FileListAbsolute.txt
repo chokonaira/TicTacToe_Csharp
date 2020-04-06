@@ -1,0 +1,4 @@
+/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/obj/Debug/netcoreapp3.1/TicTacToe.Console.csprojAssemblyReference.cache
+/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/obj/Debug/netcoreapp3.1/TicTacToe.Console.csproj.CoreCompileInputs.cache
+/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/obj/Debug/netcoreapp3.1/TicTacToe.Console.AssemblyInfoInputs.cache
+/Users/henryokonkwo/Desktop/owc/TicTacToe/TicTacToe/TicTacToe.Console/obj/Debug/netcoreapp3.1/TicTacToe.Console.AssemblyInfo.cs
