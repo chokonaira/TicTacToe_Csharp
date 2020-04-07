@@ -11,7 +11,7 @@ namespace TicTacToe.ConsoleGame.Test
             Welcome game = new Welcome();
             string[] args = { };
             WelcomeConsole.Main(args);
-            string actual = game._welcomeMassage;
+            string actual = game.WelcomeMassage;
             string expected = "Welcome to Tic Tac Toe!";
 
             Assert.Equal(expected, actual);

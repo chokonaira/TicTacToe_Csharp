@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace TicTacToe.ConsoleGame
 {
     public class WelcomeConsole
@@ -7,9 +6,13 @@ namespace TicTacToe.ConsoleGame
         public static void Main(string[] args)
         {
             Welcome game = new Welcome();
-            string message = game._welcomeMassage;
-            Console.WriteLine(message);
+            Board board = new Board();
+            string message = game.WelcomeMassage;
+            string instruction = game.GameInstruction;
 
+            Console.WriteLine(message);
+            Console.WriteLine(board.GetBoard());
+            Console.WriteLine(instruction);
         }
     }
 }
