@@ -1,0 +1,9 @@
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/bin/Debug/netstandard2.0/TicTacToe.deps.json
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/bin/Debug/netstandard2.0/TicTacToe.dll
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/bin/Debug/netstandard2.0/TicTacToe.pdb
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.csprojAssemblyReference.cache
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.csproj.CoreCompileInputs.cache
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.AssemblyInfoInputs.cache
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.AssemblyInfo.cs
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.dll
+/Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe_Csharp/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.pdb
