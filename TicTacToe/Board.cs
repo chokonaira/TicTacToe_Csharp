@@ -49,9 +49,9 @@ namespace TicTacToe
                     (GameBoard[2] == Symbol && GameBoard[4] == Symbol && GameBoard[6] == Symbol);
         }
 
-        public bool CheckDraw(char symbol_x, char symbol_o)
+        public bool CheckDraw(char symbol_X, char symbol_O)
         {
-            if (CheckWin(symbol_x) || CheckWin(symbol_o)) return false;
+            if (CheckWin(symbol_X) || CheckWin(symbol_O)) return false;
             if (GetAvailableMoves() > 0) return false;
             return true;
         }
