@@ -61,6 +61,14 @@ namespace TicTacToe
 
         }
 
+        public bool CheckGameEnded(GetAvailableMoves)
+        {
+            if (int GetAvailableMoves() && CheckWin(char symbol))
+            {
+                return true;
+            }
+            return false;
+        }
 
 
         //public void SetPositions(int num, char value)
