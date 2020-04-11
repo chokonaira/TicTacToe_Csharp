@@ -26,5 +26,8 @@
 /Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.AssemblyInfo.cs
 /Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.dll
 /Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.pdb
+<<<<<<< HEAD
 /Users/henryokonkwo/Desktop/owc/apprenticeship/TicTacToe/TicTacToe/obj/Debug/netstandard2.0/TicTacToe.csprojAssemblyReference.cache
 >>>>>>> implemented check for draw method
+=======
+>>>>>>> Implement player class
