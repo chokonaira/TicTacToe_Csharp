@@ -20,7 +20,6 @@ namespace TicTacToe.ConsoleGame
                 }
                 Console.WriteLine();
             }
-            //Console.WriteLine(array);
         }
 
         public void WriteBool(bool message)
