@@ -5,9 +5,9 @@ namespace TicTacToe
     {
         public char Symbol { get; }
 
-        public Player(char Symbol)
+        public Player(char symbol)
         {
-            this.Symbol = Symbol;
+            this.Symbol = symbol;
         }
       
     }

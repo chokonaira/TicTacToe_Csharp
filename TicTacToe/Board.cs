@@ -19,9 +19,9 @@ namespace TicTacToe
                 MakeMove(' ', i);
             }
         }
-        public void MakeMove(char Symbol, int position)
+        public void MakeMove(char symbol, int position)
         {
-            GameBoard[position] = Symbol;
+            GameBoard[position] = symbol;
         }
 
         public int GetAvailableMoves()
