@@ -1,8 +1,18 @@
-﻿using System;
-using Xunit;
+﻿using Xunit;
 
 namespace TicTacToe.Test
 {
+    internal class Helpers
+    {
+        public void FillBoard(Board board, int[] positions, char[] symbols)
+        {
+            for (int i = 0; i < positions.Length; i++)
+            {
+                board.MakeMove(symbols[i], positions[i]);
+            }
+        }
+    }
+
     public class BoardTest
     {
         [Fact]
@@ -37,7 +47,6 @@ namespace TicTacToe.Test
             Board board = new Board(3);
             int expected = 9;
             Assert.Equal(expected, board.GetAvailableMoves());
-           
         }
 
         [Fact]
@@ -53,9 +62,10 @@ namespace TicTacToe.Test
         public void CheckBoardForHorizontalWin()
         {
             Board board = new Board(3);
-            board.GameBoard[0] = 'x';
-            board.GameBoard[1] = 'x';
-            board.GameBoard[2] = 'x';
+            Helpers helper = new Helpers();
+            int[] positions = { 0, 4, 8 };
+            char[] symbols = { 'x', 'x', 'x' };
+            helper.FillBoard(board, positions, symbols);
             bool actual = board.CheckWin('x');
             Assert.True(actual);
 
@@ -65,9 +75,10 @@ namespace TicTacToe.Test
         public void CheckBoardForVerticalWin()
         {
             Board board = new Board(3);
-            board.GameBoard[1] = 'o';
-            board.GameBoard[4] = 'o';
-            board.GameBoard[7] = 'o';
+            Helpers helper = new Helpers();
+            int[] positions = { 1, 4, 7 };
+            char[] symbols = { 'o', 'o', 'o' };
+            helper.FillBoard(board, positions, symbols);
             bool actual = board.CheckWin('o');
             Assert.True(actual);
         }
@@ -76,9 +87,10 @@ namespace TicTacToe.Test
         public void CheckBoardForDiagonalWin()
         {
             Board board = new Board(3);
-            board.GameBoard[2] = 'x';
-            board.GameBoard[4] = 'x';
-            board.GameBoard[6] = 'x';
+            Helpers helper = new Helpers();
+            int[] positions = { 2, 4, 6 };
+            char[] symbols = { 'x', 'x', 'x' };
+            helper.FillBoard(board, positions, symbols);
             bool actual = board.CheckWin('x');
             Assert.True(actual);
 
@@ -88,9 +100,10 @@ namespace TicTacToe.Test
         public void CheckBoardForSecondDiagonalWin()
         {
             Board board = new Board(3);
-            board.GameBoard[0] = 'x';
-            board.GameBoard[4] = 'x';
-            board.GameBoard[8] = 'x';
+            Helpers helper = new Helpers();
+            int[] positions = { 0, 4, 8 };
+            char[] symbols = { 'x','x', 'x' };
+            helper.FillBoard(board, positions, symbols);
             bool actual = board.CheckWin('x');
             Assert.True(actual);
         }
@@ -99,18 +112,10 @@ namespace TicTacToe.Test
         public void CheckForActualDraw()
         {
             Board board = new Board(3);
-            // o o x
-            // x x o
-            // o x x
-            board.GameBoard[0] = 'o';
-            board.GameBoard[1] = 'o';
-            board.GameBoard[2] = 'x';
-            board.GameBoard[3] = 'x';
-            board.GameBoard[4] = 'x';
-            board.GameBoard[5] = 'o';
-            board.GameBoard[6] = 'o';
-            board.GameBoard[7] = 'x';
-            board.GameBoard[8] = 'x';
+            Helpers helper = new Helpers();
+            int[] positions = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+            char[] symbols = { 'o', 'o', 'x', 'x', 'x', 'o', 'o', 'x', 'x' };
+            helper.FillBoard(board, positions, symbols);
             bool actual = board.CheckDraw('x', 'o');
             Assert.True(actual);
         }
@@ -119,39 +124,41 @@ namespace TicTacToe.Test
         public void FalseDrawIfWin()
         {
             Board board = new Board(3);
-            // x o x
-            // x x o
-            // o x x
-            board.GameBoard[0] = 'x';
-            board.GameBoard[1] = 'o';
-            board.GameBoard[2] = 'x';
-            board.GameBoard[3] = 'x';
-            board.GameBoard[4] = 'x';
-            board.GameBoard[5] = 'o';
-            board.GameBoard[6] = 'o';
-            board.GameBoard[7] = 'x';
-            board.GameBoard[8] = 'x';
+            Helpers helper = new Helpers();
+            int[] positions = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+            char[] symbols = { 'x', 'o', 'x', 'x', 'x', 'o', 'o', 'x', 'x' };
+            helper.FillBoard(board, positions, symbols);
             bool actual = board.CheckDraw('x', 'o');
             Assert.False(actual);
         }
+
 
         [Fact]
         public void FalseDrawIfBoardHasAvailableMoves()
         {
             Board board = new Board(3);
-            // - o x
-            // x x o
-            // o x x
-            board.GameBoard[1] = 'o';
-            board.GameBoard[2] = 'x';
-            board.GameBoard[3] = 'x';
-            board.GameBoard[4] = 'x';
-            board.GameBoard[5] = 'o';
-            board.GameBoard[6] = 'o';
-            board.GameBoard[7] = 'x';
-            board.GameBoard[8] = 'x';
+            Helpers helper = new Helpers();
+            int[] positions = { 1, 2, 3, 4, 5, 6, 7, 8 };
+            char[] symbols = { 'o', 'x', 'x', 'x', 'o', 'o', 'x', 'x' };
+            helper.FillBoard(board, positions, symbols);
             bool actual = board.CheckDraw('x', 'o');
             Assert.False(actual);
         }
+
+        [Fact]
+        public void ClearGameBoard()
+        {
+            Board board = new Board(3);
+            Helpers helper = new Helpers();
+            int[] positions = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+            char[] symbols = { 'o', 'o', 'x', 'x', 'x', 'o', 'o', 'x', 'x' };
+            helper.FillBoard(board, positions, symbols);
+            board.InitializeBoard();
+            char[] actual = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' };
+
+            Assert.Equal(board.GameBoard, actual);
+        }
     }
+
+   
 }
