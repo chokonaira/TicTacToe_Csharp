@@ -15,7 +15,6 @@ namespace TicTacToe
         public bool CheckPosition(char[] board, int position)
         {
             ErrorMessage = "Board position already occupied or out of range";
-
             return !(position > board.Length - 1 || position < 0) && (board[position] == ' ');
 
             //if (position > board.Length - 1 || position < 0) return false;
