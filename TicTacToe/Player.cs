@@ -3,12 +3,16 @@ namespace TicTacToe
 {
     public class Player
     {
-        public char Symbol { get; }
+        public char Symbol { get; set; }
 
         public Player(char symbol)
         {
-            this.Symbol = symbol;
+            Symbol = symbol;
         }
-      
+        public void TogglePlayer()
+        {
+            Symbol = Symbol == 'x' ? 'o' : 'x';
+            
+        }
     }
 }

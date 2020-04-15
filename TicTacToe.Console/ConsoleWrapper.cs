@@ -21,10 +21,5 @@ namespace TicTacToe.ConsoleGame
                 Console.WriteLine();
             }
         }
-
-        public void WriteBool(bool message)
-        {
-            Console.WriteLine(message);
-        }
     }
 }

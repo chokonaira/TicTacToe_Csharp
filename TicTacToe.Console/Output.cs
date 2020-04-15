@@ -20,10 +20,5 @@ namespace TicTacToe.ConsoleGame
         {
             _console.WriteArray(message);
         }
-
-        public void DisplayBool(bool message)
-        {
-            _console.WriteBool(message);
-        }
     }
 }

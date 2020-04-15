@@ -8,7 +8,7 @@ namespace TicTacToe.Test
         [Fact]
         public void SetWelcomeMessage()
         {
-            Welcome game = new Welcome();
+            Message game = new Message();
 
             string actual = game.WelcomeMassage;
             string expected = "Welcome to Tic Tac Toe!";
@@ -19,10 +19,20 @@ namespace TicTacToe.Test
         [Fact]
         public void SetGameInstruction()
         {
-            Welcome game = new Welcome();
+            Message game = new Message();
 
             string actual = game.GameInstruction;
-            string expected = "Use symbol X and O, In postion 1 to 9"; 
+            string expected = "These are the diffenrent move positions you can make"; 
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void SetWinMessage()
+        {
+            Message game = new Message();
+            Player player = new Player('x');
+            string actual = game.SetWinMessage(player.Symbol);
+            string expected = "Congratulations player x has won!";
 
             Assert.Equal(expected, actual);
         }

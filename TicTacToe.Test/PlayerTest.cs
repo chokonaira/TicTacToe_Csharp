@@ -20,5 +20,12 @@ namespace TicTacToe.Test
             char actual = player.Symbol;
             Assert.Equal('o', actual);
         }
+        [Fact]
+        public void CheckThatPlayerIsToggled()
+        {
+            Player player = new Player('x');
+            player.TogglePlayer();
+            Assert.Equal('o', player.Symbol);
+        }
     }
 }

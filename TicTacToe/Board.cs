@@ -36,6 +36,9 @@ namespace TicTacToe
             }
             return counter;
         }
+        //x o -
+        //- x o
+        //- - x 
        
         public bool CheckWin(char Symbol)
         {
@@ -51,10 +54,7 @@ namespace TicTacToe
 
         public bool CheckDraw(char symbol_X, char symbol_O)
         {
-            //find a way to return one statement 
-            //if (CheckWin(symbol_X) || CheckWin(symbol_O)) return false;
             return (GetAvailableMoves() == 0 && !(CheckWin(symbol_X) || CheckWin(symbol_O)));
-            //return true;
         }
 
     }

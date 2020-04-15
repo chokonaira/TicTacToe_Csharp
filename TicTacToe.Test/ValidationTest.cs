@@ -23,14 +23,14 @@ namespace TicTacToe.Test
             Assert.False(actual);
         }
 
-        [Fact]
-        public void WrongPlayerSymbolInteger()
-        {
-            char symbol = 'a';
-            bool actual = validate.PlayerSymbol(symbol);
-            Assert.Equal("Symbol must be x and o", validate.ErrorMessage);
-            Assert.False(actual);
-        }
+        //[Fact]
+        //public void WrongPlayerSymbolInteger()
+        //{
+        //    int symbol = 1;
+        //    bool actual = validate.PlayerSymbol(symbol);
+        //    Assert.Equal("Symbol must be x and o", validate.ErrorMessage);
+        //    Assert.False(actual);
+        //}
 
         [Fact]
         public void EmptyPlayerSymbol()
