@@ -63,7 +63,14 @@ namespace TicTacToe.Test
             Assert.Equal("Please Enter an actual Number between 0 to 9", validate.Message);
             Assert.True(actual);
         }
-
+        [Fact]
+        public void CheckForEmptyInput()
+        {
+            string position = " ";
+            bool actual = validate.CheckString(position);
+            Assert.Equal("Please Enter an actual Number between 0 to 9", validate.Message);
+            Assert.True(actual);
+        }
         [Fact]
         public void EmptyPlayerSymbol()
         {
