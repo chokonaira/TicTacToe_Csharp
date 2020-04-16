@@ -29,7 +29,7 @@ namespace TicTacToe.ConsoleGame
 
             board.GetAvailableMoves();
 
-            while (!board.CheckDraw('x', 'o'))
+            while (!board.CheckDraw())
             {
                 int position = Convert.ToInt32(Console.ReadLine());
 
@@ -43,7 +43,7 @@ namespace TicTacToe.ConsoleGame
 
                 output.DisplayArray(board.GameBoard);
 
-                if (board.CheckWin(player.Symbol))
+                if (board.CheckWin())
                 {
                     //message.Winner = player.Symbol;
                     output.DisplayString(message.SetWinMessage(player.Symbol));

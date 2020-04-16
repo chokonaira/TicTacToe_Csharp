@@ -40,21 +40,21 @@ namespace TicTacToe
         //- x o
         //- - x 
        
-        public bool CheckWin(char Symbol)
-        {
-            return  (GameBoard[0] == Symbol && GameBoard[1] == Symbol && GameBoard[2] == Symbol) ||
-                    (GameBoard[3] == Symbol && GameBoard[4] == Symbol && GameBoard[5] == Symbol) ||
-                    (GameBoard[6] == Symbol && GameBoard[7] == Symbol && GameBoard[8] == Symbol) ||
-                    (GameBoard[0] == Symbol && GameBoard[3] == Symbol && GameBoard[6] == Symbol) ||
-                    (GameBoard[1] == Symbol && GameBoard[4] == Symbol && GameBoard[7] == Symbol) ||
-                    (GameBoard[2] == Symbol && GameBoard[5] == Symbol && GameBoard[8] == Symbol) ||
-                    (GameBoard[0] == Symbol && GameBoard[4] == Symbol && GameBoard[8] == Symbol) ||
-                    (GameBoard[2] == Symbol && GameBoard[4] == Symbol && GameBoard[6] == Symbol);
+        public bool CheckWin() {
+            return (GameBoard[0] == GameBoard[1] && GameBoard[1] == GameBoard[2]) ||
+                   (GameBoard[3] == GameBoard[4] && GameBoard[4] == GameBoard[5]) ||
+                   (GameBoard[6] == GameBoard[7] && GameBoard[7] == GameBoard[8]) ||
+
+                   (GameBoard[0] == GameBoard[3] && GameBoard[3] == GameBoard[6]) ||
+                   (GameBoard[1] == GameBoard[4] && GameBoard[4] == GameBoard[7]) ||
+                   (GameBoard[2] == GameBoard[5] && GameBoard[5] == GameBoard[8]) ||
+
+                   (GameBoard[0] == GameBoard[4] && GameBoard[4] == GameBoard[8]) ||
+                   (GameBoard[2] == GameBoard[4] && GameBoard[4] == GameBoard[6]);
         }
 
-        public bool CheckDraw(char symbol_X, char symbol_O)
-        {
-            return (GetAvailableMoves() == 0 && !(CheckWin(symbol_X) || CheckWin(symbol_O)));
+        public bool CheckDraw() {
+            return (GetAvailableMoves() == 0 && !CheckWin());
         }
 
     }

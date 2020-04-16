@@ -22,7 +22,7 @@ namespace TicTacToe.Test
             Message game = new Message();
 
             string actual = game.GameInstruction;
-            string expected = "These are the diffenrent move positions you can make"; 
+            string expected = "These are the different move positions you can make"; 
 
             Assert.Equal(expected, actual);
         }
