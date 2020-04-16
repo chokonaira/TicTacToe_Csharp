@@ -5,6 +5,7 @@ namespace TicTacToe
     public class Board
     {
         public char[] GameBoard { get; set; }
+        public string DrawMessage { get; set; }
 
         public Board(int size)
         {
@@ -27,9 +28,9 @@ namespace TicTacToe
         public int GetAvailableMoves()
         {
             int counter = 0;
-            for(int i = 0; i < GameBoard.Length; i++)
+            for (int i = 0; i < GameBoard.Length; i++)
             {
-                if(GameBoard[i] == ' ')
+                if (GameBoard[i] == ' ')
                 {
                     counter++;
                 }
@@ -39,23 +40,29 @@ namespace TicTacToe
         //x o -
         //- x o
         //- - x 
-       
-        public bool CheckWin() {
-            return (GameBoard[0] == GameBoard[1] && GameBoard[1] == GameBoard[2]) ||
-                   (GameBoard[3] == GameBoard[4] && GameBoard[4] == GameBoard[5]) ||
-                   (GameBoard[6] == GameBoard[7] && GameBoard[7] == GameBoard[8]) ||
 
-                   (GameBoard[0] == GameBoard[3] && GameBoard[3] == GameBoard[6]) ||
-                   (GameBoard[1] == GameBoard[4] && GameBoard[4] == GameBoard[7]) ||
-                   (GameBoard[2] == GameBoard[5] && GameBoard[5] == GameBoard[8]) ||
-
-                   (GameBoard[0] == GameBoard[4] && GameBoard[4] == GameBoard[8]) ||
-                   (GameBoard[2] == GameBoard[4] && GameBoard[4] == GameBoard[6]);
+        public bool CheckWin(char Symbol)
+        {
+            return  (GameBoard[0] == Symbol && GameBoard[1] == Symbol && GameBoard[2] == Symbol) ||
+                    (GameBoard[3] == Symbol && GameBoard[4] == Symbol && GameBoard[5] == Symbol) ||
+                    (GameBoard[6] == Symbol && GameBoard[7] == Symbol && GameBoard[8] == Symbol) ||
+                    (GameBoard[0] == Symbol && GameBoard[3] == Symbol && GameBoard[6] == Symbol) ||
+                    (GameBoard[1] == Symbol && GameBoard[4] == Symbol && GameBoard[7] == Symbol) ||
+                    (GameBoard[2] == Symbol && GameBoard[5] == Symbol && GameBoard[8] == Symbol) ||
+                    (GameBoard[0] == Symbol && GameBoard[4] == Symbol && GameBoard[8] == Symbol) ||
+                    (GameBoard[2] == Symbol && GameBoard[4] == Symbol && GameBoard[6] == Symbol);
         }
 
-        public bool CheckDraw() {
-            return (GetAvailableMoves() == 0 && !CheckWin());
+        public bool CheckDraw(char symbol_X, char symbol_O)
+        {
+            DrawMessage = "Its a Draw!";
+            return (GetAvailableMoves() == 0 && !(CheckWin(symbol_X) || CheckWin(symbol_O)));
         }
 
+        public bool PlayAgain(string input)
+        {
+            _ = GameBoard;
+            return (input.ToUpper() == "Y");
+        }
     }
 }

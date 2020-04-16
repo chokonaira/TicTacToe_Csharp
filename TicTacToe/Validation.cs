@@ -1,24 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TicTacToe
 {
     public class Validation
     {
-        public string ErrorMessage { get; set; }
+        public string Message { get; set; }
 
         public bool PlayerSymbol(char symbol)
         {
-            ErrorMessage = "Symbol must be x and o";
+            Message = "Symbol must be x and o";
             return (char.ToLower(symbol) == 'x' || char.ToLower(symbol) == 'o');
         }
 
-        public bool CheckPosition(char[] board, int position)
+        public bool CheckDigitRange(int input)
         {
-            ErrorMessage = "Board position already occupied or out of range";
-            return !(position > board.Length - 1 || position < 0) && (board[position] == ' ');
+            Message = "Input must be between 0 to 9";
+            IEnumerable<int> acceptedNumber = Enumerable.Range(0, 10);
+            return acceptedNumber.Contains(input);
+        }
 
-            //if (position > board.Length - 1 || position < 0) return false;
-            //return (board[position] == ' ');
+        public bool CheckString(string input)
+        {
+            Message = "Please Enter an actual Number between 0 to 9";
+            return (!int.TryParse(input, out _));
+        }
+
+        public bool CheckBoardRange(char[] board, int position)
+        {
+            Message = "Position out of range";
+            return (position <= board.Length - 1 && position >= 0);
+        }
+        public bool CheckFreePosition(char[] board, int position)
+        {
+            Message = "Position already occupied, choose another spot";
+            return (board[position] == ' ');
         }
     }
 }

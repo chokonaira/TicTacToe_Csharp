@@ -19,20 +19,28 @@ namespace TicTacToe.Test
         [Fact]
         public void SetGameInstruction()
         {
-            Message game = new Message();
-
-            string actual = game.GameInstruction;
+            Message message = new Message();
+            string actual = message.GameInstruction;
             string expected = "These are the different move positions you can make"; 
 
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void SetWinMessage()
+        public void SetAWinMessage()
         {
-            Message game = new Message();
+            Message message = new Message();
             Player player = new Player('x');
-            string actual = game.SetWinMessage(player.Symbol);
+            string actual = message.SetWinMessage(player.Symbol);
             string expected = "Congratulations player x has won!";
+
+            Assert.Equal(expected, actual);
+        }
+        [Fact]
+        public void PlayAgainMessage()
+        {
+            Message message = new Message();
+            string actual = message.StartAgain;
+            string expected = "Tap [Y] and enter to play again or Tap any key to quit";
 
             Assert.Equal(expected, actual);
         }

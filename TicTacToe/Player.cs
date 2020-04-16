@@ -5,6 +5,7 @@ namespace TicTacToe
     {
         public char Symbol { get; set; }
 
+
         public Player(char symbol)
         {
             Symbol = symbol;
@@ -12,7 +13,6 @@ namespace TicTacToe
         public void TogglePlayer()
         {
             Symbol = Symbol == 'x' ? 'o' : 'x';
-            
         }
     }
 }

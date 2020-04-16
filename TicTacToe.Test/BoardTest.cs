@@ -69,7 +69,7 @@ namespace TicTacToe.Test
             int[] positions = { 0, 4, 8 };
             char[] symbols = { 'x', 'x', 'x' };
             helper.FillBoard(board, positions, symbols);
-            bool actual = board.CheckWin();
+            bool actual = board.CheckWin('x');
             Assert.True(actual);
 
         }
@@ -81,7 +81,7 @@ namespace TicTacToe.Test
             int[] positions = { 1, 4, 7 };
             char[] symbols = { 'o', 'o', 'o' };
             helper.FillBoard(board, positions, symbols);
-            bool actual = board.CheckWin();
+            bool actual = board.CheckWin('o');
             Assert.True(actual);
         }
 
@@ -92,7 +92,7 @@ namespace TicTacToe.Test
             int[] positions = { 2, 4, 6 };
             char[] symbols = { 'x', 'x', 'x' };
             helper.FillBoard(board, positions, symbols);
-            bool actual = board.CheckWin();
+            bool actual = board.CheckWin('x');
             Assert.True(actual);
 
         }
@@ -104,7 +104,7 @@ namespace TicTacToe.Test
             int[] positions = { 0, 4, 8 };
             char[] symbols = { 'x','x', 'x' };
             helper.FillBoard(board, positions, symbols);
-            bool actual = board.CheckWin();
+            bool actual = board.CheckWin('x');
             Assert.True(actual);
         }
 
@@ -115,7 +115,9 @@ namespace TicTacToe.Test
             int[] positions = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
             char[] symbols = { 'o', 'o', 'x', 'x', 'x', 'o', 'o', 'x', 'x' };
             helper.FillBoard(board, positions, symbols);
-            bool actual = board.CheckDraw();
+            bool actual = board.CheckDraw('x', 'o');
+
+            Assert.Equal("Its a Draw!", board.DrawMessage);
             Assert.True(actual);
         }
 
@@ -126,7 +128,7 @@ namespace TicTacToe.Test
             int[] positions = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
             char[] symbols = { 'x', 'o', 'x', 'x', 'x', 'o', 'o', 'x', 'x' };
             helper.FillBoard(board, positions, symbols);
-            bool actual = board.CheckDraw();
+            bool actual = board.CheckDraw('x', 'o');
             Assert.False(actual);
         }
 
@@ -138,7 +140,7 @@ namespace TicTacToe.Test
             int[] positions = { 1, 2, 3, 4, 5, 6, 7, 8 };
             char[] symbols = { 'o', 'x', 'x', 'x', 'o', 'o', 'x', 'x' };
             helper.FillBoard(board, positions, symbols);
-            bool actual = board.CheckDraw();
+            bool actual = board.CheckDraw('x', 'o');
             Assert.False(actual);
         }
 
@@ -159,12 +161,5 @@ namespace TicTacToe.Test
             //Assert
             Assert.Equal(expected, actual);
         }
-
-        
     }
-
-   
 }
-//you dont need to compare the checkwin against a symbol
-//implement a game logic
-//change the for loops

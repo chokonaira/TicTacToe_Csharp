@@ -19,25 +19,57 @@ namespace TicTacToe.Test
         {
             char symbol = 'a';
             bool actual = validate.PlayerSymbol(symbol);
-            Assert.Equal("Symbol must be x and o", validate.ErrorMessage);
+            Assert.Equal("Symbol must be x and o", validate.Message);
             Assert.False(actual);
         }
 
-        //[Fact]
-        //public void WrongPlayerSymbolInteger()
-        //{
-        //    int symbol = 1;
-        //    bool actual = validate.PlayerSymbol(symbol);
-        //    Assert.Equal("Symbol must be x and o", validate.ErrorMessage);
-        //    Assert.False(actual);
-        //}
+        [Fact]
+        public void CheckDigitWithinRange()
+        {
+            int input = 1;
+            bool actual = validate.CheckDigitRange(input);
+            Assert.Equal("Input must be between 0 to 9", validate.Message);
+            Assert.True(actual);
+        }
+        [Fact]
+        public void CheckDigitAboveRange()
+        {
+            int input = 15;
+            bool actual = validate.CheckDigitRange(input);
+            Assert.Equal("Input must be between 0 to 9", validate.Message);
+            Assert.False(actual);
+        }
+        [Fact]
+        public void CheckDigitsBelowRange()
+        {
+            int input = -1;
+            bool actual = validate.CheckDigitRange(input);
+            Assert.Equal("Input must be between 0 to 9", validate.Message);
+            Assert.False(actual);
+        }
+        [Fact]
+        public void CheckForStringInput()
+        {
+            string position = "hello";
+            bool actual = validate.CheckString(position);
+            Assert.Equal("Please Enter an actual Number between 0 to 9", validate.Message);
+            Assert.True(actual);
+        }
+        [Fact]
+        public void CheckForSpecialCharacterInput()
+        {
+            string position = "#&$^%^#&";
+            bool actual = validate.CheckString(position);
+            Assert.Equal("Please Enter an actual Number between 0 to 9", validate.Message);
+            Assert.True(actual);
+        }
 
         [Fact]
         public void EmptyPlayerSymbol()
         {
             char symbol = ' ';
             bool actual = validate.PlayerSymbol(symbol);
-            Assert.Equal("Symbol must be x and o", validate.ErrorMessage);
+            Assert.Equal("Symbol must be x and o", validate.Message);
             Assert.False(actual);
         }
         [Fact]
@@ -66,14 +98,14 @@ namespace TicTacToe.Test
         public void CheckForOccupiedPosition()
         {
             board.MakeMove('x', 0);
-            bool actual = validate.CheckPosition(board.GameBoard, 0);
-            Assert.Equal("Board position already occupied or out of range", validate.ErrorMessage);
+            bool actual = validate.CheckFreePosition(board.GameBoard, 0);
+            Assert.Equal("Position already occupied, choose another spot", validate.Message);
             Assert.False(actual);
         }
         [Fact]
         public void CheckForEmptyPosition()
         {
-            bool actual = validate.CheckPosition(board.GameBoard, 0);
+            bool actual = validate.CheckFreePosition(board.GameBoard, 0);
             Assert.True(actual);
         }
         [Fact]
@@ -81,7 +113,7 @@ namespace TicTacToe.Test
         {
             board.MakeMove('x', 0);
             board.MakeMove('x', 1);
-            bool actual = validate.CheckPosition(board.GameBoard, 2);
+            bool actual = validate.CheckFreePosition(board.GameBoard, 2);
             Assert.True(actual);
         }
         [Fact]
@@ -89,8 +121,8 @@ namespace TicTacToe.Test
         {
             board.MakeMove('x', 0);
             board.MakeMove('x', 1);
-            bool actual = validate.CheckPosition(board.GameBoard, 10);
-            Assert.Equal("Board position already occupied or out of range", validate.ErrorMessage);
+            bool actual = validate.CheckBoardRange(board.GameBoard, 10);
+            Assert.Equal("Position out of range", validate.Message);
             Assert.False(actual);
         }
         [Fact]
@@ -98,8 +130,8 @@ namespace TicTacToe.Test
         {
             board.MakeMove('x', 0);
             board.MakeMove('x', 1);
-            bool actual = validate.CheckPosition(board.GameBoard, -1);
-            Assert.Equal("Board position already occupied or out of range", validate.ErrorMessage);
+            bool actual = validate.CheckBoardRange(board.GameBoard, -1);
+            Assert.Equal("Position out of range", validate.Message);
             Assert.False(actual);
         }
     }
