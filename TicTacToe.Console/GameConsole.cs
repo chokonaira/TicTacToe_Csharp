@@ -33,7 +33,7 @@
 
                     board.GetAvailableMoves();
 
-                    while (!board.CheckDraw('x', 'o'))
+                    while (!board.CheckDraw())
                     {
                         string input = Console.ReadLine();
 
@@ -75,7 +75,7 @@
 
                         output.DisplayArray(board.GameBoard);
 
-                        if (board.CheckWin(player.Symbol))
+                        if (board.CheckWin())
                         {
                             //Set Red Message Color
                             Console.ForegroundColor = ConsoleColor.Green;
@@ -99,3 +99,4 @@
             }
         }
     }
+//
