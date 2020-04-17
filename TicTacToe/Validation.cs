@@ -17,8 +17,8 @@ namespace TicTacToe
         public bool CheckDigitRange(int input)
         {
             Message = "Input must be between 0 to 9";
-            IEnumerable<int> acceptedNumber = Enumerable.Range(0, 10);
-            return acceptedNumber.Contains(input);
+            IEnumerable<int> acceptedNumbers = Enumerable.Range(0, 10);
+            return acceptedNumbers.Contains(input);
         }
 
         public bool CheckString(string input)
@@ -35,7 +35,7 @@ namespace TicTacToe
         public bool CheckFreePosition(char[] board, int position)
         {
             Message = "Position already occupied, choose another spot";
-            return (board[position] == ' ');
+            return (board[position] == Convert.ToChar(position + 1));
         }
     }
 }

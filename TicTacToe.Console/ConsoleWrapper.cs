@@ -15,7 +15,7 @@ namespace TicTacToe.ConsoleGame
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Console.Write(array[x]);
+                    Console.Write($"-|{array[x]}|-");
                     x++;
                 }
                 Console.WriteLine();
