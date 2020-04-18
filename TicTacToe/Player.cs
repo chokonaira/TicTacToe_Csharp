@@ -1,18 +1,18 @@
-﻿using System;
-namespace TicTacToe
-{
-    public class Player
+﻿    using System;
+    namespace TicTacToe
     {
-        public char Symbol { get; set; }
+        public class Player
+        {
+            public char Symbol { get; set; }
 
 
-        public Player(char symbol)
-        {
-            Symbol = symbol;
-        }
-        public void TogglePlayer()
-        {
-            Symbol = Symbol == 'x' ? 'o' : 'x';
+            public Player(char symbol)
+            {
+                Symbol = symbol;
+            }
+            public void TogglePlayer()
+            {
+                Symbol = Symbol == 'X' ? 'O' : 'X';
+            }
         }
     }
-}

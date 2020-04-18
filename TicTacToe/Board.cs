@@ -1,75 +1,68 @@
-﻿using System;
-using System.Linq;
+﻿    using System;
+    using System.Linq;
 
-namespace TicTacToe
-{
-    public class Board
+    namespace TicTacToe
     {
-        public char[] GameBoard { get; set; }
-        public string DrawMessage { get; set; }
-
-        public Board(int size)
+        public class Board
         {
-            GameBoard = new char[size * size];
-            Console.WriteLine("GameBoard1");
-            Console.WriteLine(GameBoard);
-            InitializeBoard();
-            Console.WriteLine("GameBoard2");
-            Console.WriteLine(GameBoard);
-        }
+            public char[] GameBoard { get; set; }
+            public string DrawMessage { get; set; }
 
-        public void InitializeBoard()
-        {
-            for (int i = 0; i < GameBoard.Length; i++)
+            public Board(int size)
             {
-                var symbol = i + 1;
-
-                MakeMove(Convert.ToChar(symbol), i);
+                GameBoard = new char[size * size];
+                InitializeBoard();
             }
-        }
-        public void MakeMove(char symbol, int position)
-        {
-            GameBoard[position] = symbol;
-        }
 
-        public int GetAvailableMoves()
-        {
-            int counter = 0;
-            for (int i = 0; i < GameBoard.Length; i++)
+            public void InitializeBoard()
             {
-                if (GameBoard[i] == Convert.ToChar(i + 1))
+                char symbol = '1';
+                for (int position = 1; position <= GameBoard.Length; position++)
                 {
-                    counter++;
+                    MakeMove(symbol++, position);
                 }
             }
-            return counter;
-        }
-        //x o -
-        //- x o
-        //- - x 
 
-        public bool CheckWin()
-        {
-            return (GameBoard[0] == GameBoard[1] && GameBoard[1] == GameBoard[2]) ||
-                   (GameBoard[3] == GameBoard[4] && GameBoard[4] == GameBoard[5]) ||
-                   (GameBoard[6] == GameBoard[7] && GameBoard[7] == GameBoard[8]) ||
-                   (GameBoard[0] == GameBoard[3] && GameBoard[3] == GameBoard[6]) ||
-                   (GameBoard[1] == GameBoard[4] && GameBoard[4] == GameBoard[7]) ||
-                   (GameBoard[2] == GameBoard[5] && GameBoard[5] == GameBoard[8]) ||
-                   (GameBoard[0] == GameBoard[4] && GameBoard[4] == GameBoard[8]) ||
-                   (GameBoard[2] == GameBoard[4] && GameBoard[4] == GameBoard[6]);
-        }
-        public bool CheckDraw()
-        {
-            DrawMessage = "Its a Draw!";
-            return (GetAvailableMoves() == 0 && !CheckWin());
-        }
+            public void MakeMove(char symbol, int position)
+            {
+                GameBoard[position - 1] = symbol;
+            }
 
-        public bool PlayAgain(string input)
-        {
-            //_ = GameBoard;
-            InitializeBoard();
-            return (input.ToUpper() == "Y");
+            public int GetAvailableMoves()
+            {
+                int counter = 0;
+                char symbol = '1';
+                for (int position = 0; position < GameBoard.Length; position++)
+                {
+                    if (GameBoard[position] == symbol++)
+                    {
+                        counter++;
+                    }
+                }
+                return counter;
+            }
+
+            public bool CheckWin()
+            {
+                return (GameBoard[0] == GameBoard[1] && GameBoard[1] == GameBoard[2]) ||
+                       (GameBoard[3] == GameBoard[4] && GameBoard[4] == GameBoard[5]) ||
+                       (GameBoard[6] == GameBoard[7] && GameBoard[7] == GameBoard[8]) ||
+                       (GameBoard[0] == GameBoard[3] && GameBoard[3] == GameBoard[6]) ||
+                       (GameBoard[1] == GameBoard[4] && GameBoard[4] == GameBoard[7]) ||
+                       (GameBoard[2] == GameBoard[5] && GameBoard[5] == GameBoard[8]) ||
+                       (GameBoard[0] == GameBoard[4] && GameBoard[4] == GameBoard[8]) ||
+                       (GameBoard[2] == GameBoard[4] && GameBoard[4] == GameBoard[6]);
+            }
+            public bool CheckDraw()
+            {
+                DrawMessage = "Its a Draw!";
+                return (GetAvailableMoves() == 0 && !CheckWin());
+            }
+
+            public bool PlayAgain(string input)
+            {
+                InitializeBoard();
+                return (input.ToUpper() == "Y");
+            }
         }
     }
-}

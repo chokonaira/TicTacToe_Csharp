@@ -1,31 +1,31 @@
-﻿using System;
-using Xunit;
+﻿    using System;
+    using Xunit;
 
-namespace TicTacToe.Test
-{
-    public class PlayerTest
+    namespace TicTacToe.Test
     {
-        [Fact]
-        public void InitializePlayerWithSYmbol_X()
+        public class PlayerTest
         {
-            Player player = new Player('x');
-            char actual = player.Symbol;
-            Assert.Equal('x',actual);
-        }
+            [Fact]
+            public void InitializePlayerWithSYmbol_X()
+            {
+                Player player = new Player('X');
+                char actual = player.Symbol;
+                Assert.Equal('X',actual);
+            }
 
-        [Fact]
-        public void InitializePlayerWithASYmbol_O()
-        {
-            Player player = new Player('o');
-            char actual = player.Symbol;
-            Assert.Equal('o', actual);
-        }
-        [Fact]
-        public void CheckThatPlayerIsToggled()
-        {
-            Player player = new Player('x');
-            player.TogglePlayer();
-            Assert.Equal('o', player.Symbol);
+            [Fact]
+            public void InitializePlayerWithASYmbol_O()
+            {
+                Player player = new Player('O');
+                char actual = player.Symbol;
+                Assert.Equal('O', actual);
+            }
+            [Fact]
+            public void CheckThatPlayerIsToggled()
+            {
+                Player player = new Player('X');
+                player.TogglePlayer();
+                Assert.Equal('O', player.Symbol);
+            }
         }
     }
-}

@@ -1,102 +1,87 @@
-﻿    using System;
+﻿using System;
 
-    namespace TicTacToe.ConsoleGame
+namespace TicTacToe.ConsoleGame
+{
+    public class GameConsole
     {
-        public class GameConsole
+        public static void Main(string[] args)
         {
-            public static void Main(string[] args)
+            while (true)
             {
-                while (true)
+                //create message instance
+                Message message = new Message();
+                //create board instance
+                Board board = new Board(3);
+                //create validation instance
+                Validation validate = new Validation();
+                //create first player instance with a symbol
+                Player player = new Player('X');
+                //create console interface
+                IConsole console = new ConsoleWrapper();
+                Output output = new Output(console);
+
+                //display welcome message
+                Console.ForegroundColor = ConsoleColor.Green;
+                output.DisplayString(message.WelcomeMassage);
+                Console.ResetColor();
+                //display game board
+                output.DisplayArray(board.GameBoard);
+                //display Game Instruction
+                Console.ForegroundColor = ConsoleColor.Green;
+                output.DisplayString(message.GameInstruction);
+                Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                output.DisplayString($"Its Player {player.Symbol}'s Turn.");
+                Console.ResetColor();
+
+                while (!board.CheckWin())
                 {
-                    //create message instance
-                    Message message = new Message();
-                    //create board instance
-                    Board board = new Board(3);
-                    //create validation instance
-                    Validation validate = new Validation();
-                    //create first player instance with a symbol
-                    Player player = new Player('x');
-                    //Player playerTwo = new Player('o');
-                    //create console interface
-                    IConsole console = new ConsoleWrapper();
-                    Output output = new Output(console);
+                    string input = Console.ReadLine();
 
-                    //Player currentPlayer = player;
-                    //display welcome message
-                    output.DisplayString(message.WelcomeMassage);
-                    //display game board
-                    output.DisplayArray(board.GameBoard);
-                    //display Game Instruction
-                    output.DisplayString(message.GameInstruction);
-
-                    output.DisplayString($"Its Player {player.Symbol}'s Turn.");
-
-                    board.GetAvailableMoves();
-
-                    while (!board.CheckDraw())
+                    if (!validate.IsValid(board, input))
                     {
-                        string input = Console.ReadLine();
-
-                        if (validate.CheckString(input))
-                        {
-                            //Set Red Message Color
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            output.DisplayString(validate.Message);
-                            //Reset colour back to default
-                            Console.ResetColor();
-                            output.DisplayArray(board.GameBoard);
-                            continue;
-                        }
-                        int position = Int32.Parse(input);
-
-                        validate.CheckDigitRange(position);
-
-                        if (!validate.CheckBoardRange(board.GameBoard, position))
-                        {
-                            //Set Red Message Color
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            output.DisplayString(validate.Message);
-                            //Reset colour back to default
-                            Console.ResetColor();
-                            output.DisplayArray(board.GameBoard);
-                            continue;
-                        }
-                        if (!validate.CheckFreePosition(board.GameBoard, position))
-                        {
-                            //Set Red Message Color
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            output.DisplayString(validate.Message);
-                            //Reset colour back to default
-                            Console.ResetColor();
-                            output.DisplayArray(board.GameBoard);
-                            continue;
-                        }
-                        board.MakeMove(player.Symbol, position);
-
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        output.DisplayString(validate.Message);
+                        Console.ResetColor();
                         output.DisplayArray(board.GameBoard);
-
-                        if (board.CheckWin())
-                        {
-                            //Set Red Message Color
-                            Console.ForegroundColor = ConsoleColor.Green;
-                            output.DisplayString(message.SetWinMessage(player.Symbol));
-                            //Set Red Message Color
-                            Console.ResetColor();
-                            break;
-                        }
-                        player.TogglePlayer();
-                        output.DisplayString(message.ToggleMessage(player.Symbol));
+                        continue;
                     }
-                        output.DisplayString(message.StartAgain);
 
-                        string answer = Console.ReadLine();
-                        if (board.PlayAgain(answer))
-                        {
-                            continue;
-                        }
-                        return;
+                    board.MakeMove(player.Symbol, int.Parse(input));
+                    
+                    output.DisplayArray(board.GameBoard);
+
+                    if (board.CheckWin())
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        output.DisplayString(message.SetWinMessage(player.Symbol));
+                        Console.ResetColor();
+                        break;
+                    }
+                    if (board.CheckDraw())
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        output.DisplayString(board.DrawMessage);
+                        Console.ResetColor();
+                        break;
+                    }
+                    player.TogglePlayer();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    output.DisplayString(message.ToggleMessage(player.Symbol));
+                    Console.ResetColor();
                 }
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    output.DisplayString(message.StartAgain);
+                    Console.ResetColor();
+
+                    string answer = Console.ReadLine();
+                    if (board.PlayAgain(answer))
+                    {
+                        continue;
+                    }
+                    return;
             }
         }
     }
-//
+}
