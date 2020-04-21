@@ -11,7 +11,7 @@ namespace TicTacToe.ConsoleGame
 
                 if (!validate.IsValid(board, input))
                 {
-                    Colors(ConsoleColor.Red, validate.Message);
+                    GameConsole.Colors(ConsoleColor.Red, validate.Message);
                     output.DisplayArray(board.GameBoard);
                     continue;
                 }
@@ -26,29 +26,9 @@ namespace TicTacToe.ConsoleGame
                 }
 
                 player.TogglePlayer();
-                Colors(ConsoleColor.Yellow, message.ToggleMessage(player.Symbol));
+                GameConsole.Colors(ConsoleColor.Yellow, message.ToggleMessage(player.Symbol));
             }
-                //check win
-                if (board.CheckWin())
-                {
-                    Colors(ConsoleColor.Green, message.SetWinMessage(player.Symbol));
-                }
-                //check draw
-                if (board.CheckDraw())
-                {
-                    Colors(ConsoleColor.Yellow, board.DrawMessage);
-                }
-                Colors(ConsoleColor.Blue, message.StartAgain);
-        }
-
-        static void Colors(ConsoleColor color, string message)
-        {
-            IConsole console = new ConsoleWrapper();
-            Output output = new Output(console);
-
-            Console.ForegroundColor = color;
-            output.DisplayString(message);
-            Console.ResetColor();
+                
         }
     }
 }
