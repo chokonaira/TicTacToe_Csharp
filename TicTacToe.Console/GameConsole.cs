@@ -1,0 +1,62 @@
+﻿using System;
+
+namespace TicTacToe.ConsoleGame
+{
+    public class GameConsole
+    {
+        public static void Main(string[] args)
+        {
+            while (true)
+            {
+                Message message = new Message();
+
+                Board board = new Board(3);
+
+                Validation validate = new Validation();
+
+                Player player = new Player('X');
+
+                IConsole console = new ConsoleWrapper();
+                Output output = new Output(console);
+
+                Colors(ConsoleColor.Green, message.WelcomeMassage);
+
+                output.DisplayArray(board.GameBoard);
+
+                Colors(ConsoleColor.Green, message.GameInstruction);
+
+                Colors(ConsoleColor.Yellow, $"Its Player {player.Symbol}'s Turn.");
+
+                GameLoop gameLoop = new GameLoop();
+                gameLoop.Loop(board, validate, player, output, message);
+
+                if (board.CheckWin())
+                {
+                    Colors(ConsoleColor.Green, message.SetWinMessage(player.Symbol));
+                }
+                if (board.CheckDraw())
+                {
+                    Colors(ConsoleColor.Yellow, board.DrawMessage);
+                }
+                    Colors(ConsoleColor.Blue, message.StartAgain);
+
+                string answer = Console.ReadLine();
+
+                if (board.PlayAgain(answer))
+                {
+                    continue;
+                }
+                return;
+            }
+        }
+        public static void Colors(ConsoleColor color, string message)
+        {
+            IConsole console = new ConsoleWrapper();
+            Output output = new Output(console);
+
+            Console.ForegroundColor = color;
+            output.DisplayString(message);
+            Console.ResetColor();
+        }
+    }
+}
