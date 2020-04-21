@@ -45,5 +45,12 @@
                 Message = "Position already occupied, choose another spot";
                 return !(board[position -1] == 'X' || board[position-1] == 'O');
             }
+
+            public bool CheckGameMode(string input)
+            {
+                int.TryParse(input, out int valid);
+                Message = "Invalid option, please choose between option 1 or 2";
+                return (valid == 1 || valid == 2);
+            }
         }
     }

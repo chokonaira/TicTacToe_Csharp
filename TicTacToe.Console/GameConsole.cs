@@ -21,6 +21,16 @@ namespace TicTacToe.ConsoleGame
 
                 Colors(ConsoleColor.Green, message.WelcomeMassage);
 
+                Colors(ConsoleColor.Green, message.GameMode);
+
+                string mode = Console.ReadLine();
+
+                if (!validate.CheckGameMode(mode))
+                {
+                    Colors(ConsoleColor.Red, validate.Message);
+                    continue;
+                }
+
                 output.DisplayArray(board.GameBoard);
 
                 Colors(ConsoleColor.Green, message.GameInstruction);

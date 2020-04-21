@@ -44,5 +44,16 @@
 
                 Assert.Equal(expected, actual);
             }
+            [Fact]
+            public void CHooseGameMode()
+            {
+                Message message = new Message();
+                string actual = message.GameMode;
+                string expected = "Choose your prefered mode and press enter.\n1: Human Vs. Human\n2: Human Vs. Computer";
+
+                Assert.Equal(expected, actual);
+            }
         }
     }
+
+

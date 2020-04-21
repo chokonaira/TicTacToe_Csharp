@@ -141,5 +141,40 @@
                 Assert.Equal("Position out of range", validate.Message);
                 Assert.False(actual);
             }
+            [Fact]
+            public void CheckValidGameMode_1()
+            {
+                bool actual = validate.CheckGameMode("1");
+                Assert.Equal("Invalid option, please choose between option 1 or 2", validate.Message);
+                Assert.True(actual);
+            }
+            [Fact]
+            public void CheckValidGameMode_2()
+            {
+                bool actual = validate.CheckGameMode("2");
+                Assert.Equal("Invalid option, please choose between option 1 or 2", validate.Message);
+                Assert.True(actual);
+            }
+            [Fact]
+            public void CheckInvalidGameModeRange()
+            {
+                bool actual = validate.CheckGameMode("3");
+                Assert.Equal("Invalid option, please choose between option 1 or 2", validate.Message);
+                Assert.False(actual);
+            }
+            [Fact]
+            public void CheckInvalidGameModeEmpty()
+            {
+                bool actual = validate.CheckGameMode(" ");
+                Assert.Equal("Invalid option, please choose between option 1 or 2", validate.Message);
+                Assert.False(actual);
+            }
+            [Fact]
+            public void CheckInvalidGameModeSymbols()
+            {
+                bool actual = validate.CheckGameMode("@#$%^&");
+                Assert.Equal("Invalid option, please choose between option 1 or 2", validate.Message);
+                Assert.False(actual);
+            }
         }
     }
