@@ -16,6 +16,7 @@ namespace TicTacToe.ConsoleGame
 
                 Player player = new Player('X');
 
+
                 IConsole console = new ConsoleWrapper();
                 Output output = new Output(console);
 
@@ -40,7 +41,7 @@ namespace TicTacToe.ConsoleGame
                 GameLoop gameLoop = new GameLoop();
                 gameLoop.Loop(board, validate, player, output, message);
 
-                if (board.CheckWin())
+                if (board.WinningPlayer() == player.Symbol)
                 {
                     Colors(ConsoleColor.Green, message.SetWinMessage(player.Symbol));
                 }

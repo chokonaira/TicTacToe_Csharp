@@ -20,6 +20,10 @@ namespace TicTacToe.ConsoleGame
 
                 output.DisplayArray(board.GameBoard);
 
+                Console.WriteLine("----------------------1");
+                Console.WriteLine(Minimax.Evaluate(board));
+                Console.WriteLine("----------------------2");
+
                 if (board.IsGameOver())
                 {
                     break;

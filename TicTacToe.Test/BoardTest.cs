@@ -67,8 +67,8 @@
                 int[] positions = { 1, 5, 9 };
                 char[] symbols = { 'X', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
 
             }
 
@@ -79,8 +79,8 @@
                 int[] positions = { 1, 4, 7 };
                 char[] symbols = { 'O', 'O', 'O' };
                 Helper.FillBoard(board, positions, symbols);
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('O', actual);
             }
 
             [Fact]
@@ -90,8 +90,8 @@
                 int[] positions = { 3, 5, 7 };
                 char[] symbols = { 'X', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
 
             }
 
@@ -102,8 +102,8 @@
                 int[] positions = { 1, 5, 9 };
                 char[] symbols = { 'X','X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
             }
 
             [Fact]
@@ -169,8 +169,8 @@
                 char[] symbols = { 'X', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
 
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
                 bool expected = board.PlayAgain("y");
                 Assert.True(expected);
             }
@@ -197,8 +197,8 @@
                 char[] symbols = { 'X', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
 
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
                 bool expected = board.PlayAgain("uuu");
                 Assert.False(expected);
             }
