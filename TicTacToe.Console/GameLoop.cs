@@ -19,9 +19,10 @@ namespace TicTacToe.ConsoleGame
                 board.MakeMove(player.Symbol, int.Parse(input));
 
                 output.DisplayArray(board.GameBoard);
+                Minimax minimax = new Minimax('X', 'O');
 
                 Console.WriteLine("----------------------1");
-                Console.WriteLine(Minimax.Evaluate(board));
+                Console.WriteLine(minimax.Evaluate(board));
                 Console.WriteLine("----------------------2");
 
                 if (board.IsGameOver())

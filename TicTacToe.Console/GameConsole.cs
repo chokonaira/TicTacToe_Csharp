@@ -14,9 +14,6 @@ namespace TicTacToe.ConsoleGame
 
                 Validation validate = new Validation();
 
-                Player player = new Player('X');
-
-
                 IConsole console = new ConsoleWrapper();
                 Output output = new Output(console);
 
@@ -31,6 +28,8 @@ namespace TicTacToe.ConsoleGame
                     Colors(ConsoleColor.Red, validate.Message);
                     continue;
                 }
+
+                Player player = new Player('X');
 
                 output.DisplayArray(board.GameBoard);
 
