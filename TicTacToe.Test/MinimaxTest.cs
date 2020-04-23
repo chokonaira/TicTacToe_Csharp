@@ -38,7 +38,7 @@ namespace TicTacToe.Test
         [Fact]
         public void CheckThatWinningPlayerEvaluatesToZero()
         {
-
+            
             Board board = new Board(3);
             int[] positions = { 1, 5, 9 };
             char[] symbols = { 'X', 'O', 'O' };
@@ -53,7 +53,9 @@ namespace TicTacToe.Test
         [Fact]
         public void CheckBoardForBestInitialMoveOnEmptyBoard()
         {
-
+            // 1 2 3
+            // 4 5 6
+            // 7 8 9
             Board board = new Board(3);
             int[] positions = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             char[] symbols = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
@@ -68,7 +70,9 @@ namespace TicTacToe.Test
         [Fact]
         public void CheckBoardForBestMoveHorizonantal()
         {
-
+            // X X 3
+            // O O X
+            // O 8 9
             Board board = new Board(3);
             int[] positions = { 1, 2, 4, 5, 6, 7 };
             char[] symbols = { 'X', 'X', 'O', 'O', 'X', 'O' };
@@ -83,10 +87,12 @@ namespace TicTacToe.Test
         [Fact]
         public void CheckBoardForBestMoveVertical()
         {
-
+            // X O O
+            // X O X
+            // 7 8 9
             Board board = new Board(3);
-            int[] positions = { 1, 2, 3, 4, 5, 6, 8 };
-            char[] symbols = { 'X', 'O', 'O', 'X', 'O', 'X', 'O' };
+            int[] positions = { 1, 2, 3, 4, 5, 6 };
+            char[] symbols = { 'X', 'O', 'O', 'X', 'O', 'X' };
             Minimax minimax = new Minimax('X', 'O');
             Helper.FillBoard(board, positions, symbols);
             int actual = minimax.FindBestMove(board);
@@ -98,14 +104,16 @@ namespace TicTacToe.Test
         [Fact]
         public void CheckBoardForBestMoveDiagonal()
         {
-
+            // X O O
+            // O X 6
+            // X 8 9
             Board board = new Board(3);
-            int[] positions = { 1, 2, 3, 4, 5, 6, 9 };
-            char[] symbols = { 'X', 'O', 'X', 'O', 'X', 'X', 'O' };
+            int[] positions = { 1, 2, 3, 4, 5, 7 };
+            char[] symbols = { 'X', 'O', 'O', 'O', 'X', 'X' };
             Minimax minimax = new Minimax('X', 'O');
             Helper.FillBoard(board, positions, symbols);
             int actual = minimax.FindBestMove(board);
-            int expected = 7;
+            int expected = 9;
 
             Assert.Equal(expected, actual);
 

@@ -3,25 +3,22 @@ namespace TicTacToe
 {
     public class Minimax
     {
-        public char Computer, Human;
+        public char Player, Opponent;
         public Minimax(char player, char opponent)
         {
-            Computer = player;
-            Human = opponent;
+            Player = player;
+            Opponent = opponent;
         }
 
-        // Returns a value based on who is winning
         public int Evaluate(Board board)
         {
-            if(board.WinningPlayer() == Computer)
+            if(board.WinningPlayer() == Player)
             {
                 return +10;
-
-            } else if (board.WinningPlayer() == Human)
+            } else if (board.WinningPlayer() == Opponent)
             {
                 return -10;
             }
-            // Else if none of them have won then return 0
             return 0;
         }
 
@@ -31,14 +28,11 @@ namespace TicTacToe
 
             if (score == 10)
                 return score;
-
             if (score == -10)
                 return score;
-
-            if(board.GetAvailableMoves() == 0)
+            if(board.CheckDraw())
                 return 0;
 
-            // If this maximizer's move 
             if (isMax)
             {
                 int best = -1000;
@@ -46,24 +40,16 @@ namespace TicTacToe
                 char symbol = '1';
                 for (int position = 0; position < board.GameBoard.Length; position++)
                 {
-                     // Check if cell is empty
                     if (board.GameBoard[position] == symbol)
                     {
-                        // Make the move 
-                        board.GameBoard[position] = Computer;
-
-                        // Call minimax recursively and choose 
-                        // the maximum value
+                        board.GameBoard[position] = Player;
                         best = Math.Max(best, Mini_max(board, depth + 1, !isMax));
-                        // Undo the move
                         board.GameBoard[position] = symbol;
                     }
                     symbol++;
                 }
                 return best;
             }
-
-            // If this minimizer's move 
             else
             {
                 int best = 1000;
@@ -71,15 +57,10 @@ namespace TicTacToe
                 char symbol = '1';
                 for (int position = 0; position < board.GameBoard.Length; position++)
                 {
-                    // Check if cell is empty
                     if (board.GameBoard[position] == symbol)
                     {
-                        // Make the move
-                        board.GameBoard[position] = symbol;
-                        // the maximum value
+                        board.GameBoard[position] = Opponent;
                         best = Math.Min(best, Mini_max(board, depth + 1, !isMax));
-
-                        // Undo the move
                         board.GameBoard[position] = symbol;
                     }
                     symbol++;
@@ -91,32 +72,19 @@ namespace TicTacToe
         public int FindBestMove(Board board)
         {
             int bestVal = -1000;
-
             int bestMove = 0;
 
             char symbol = '1';
             for (int position = 0; position < board.GameBoard.Length; position++)
             {
-                // Check if cell is empty
                 if (board.GameBoard[position] == symbol)
                 {
-                    // Make the move 
-                    board.GameBoard[position] = Computer;
-
-                    // compute evaluation function for this 
-                    // move. 
+                    board.GameBoard[position] = Player;
                     int moveVal = Mini_max(board, 0, false);
-
-                    // Undo the move
                     board.GameBoard[position] = symbol;
-
-                    // If the value of the current move is
-                    // more than the best value, then update 
-                    // best/ 
                     if (moveVal > bestVal)
                     {
                         bestMove = position + 1;
-
                         bestVal = moveVal;
                     }
                 }

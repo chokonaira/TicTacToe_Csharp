@@ -14,7 +14,5 @@
             {
                 Symbol = Symbol == 'X' ? 'O' : 'X';
             }
-
-           
         }
     }
