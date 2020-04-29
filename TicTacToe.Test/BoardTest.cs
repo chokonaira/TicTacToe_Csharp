@@ -259,7 +259,7 @@ using Xunit;
                 Assert.Equal(expected, actual);
             }
             [Fact]
-            public void CheckFor_5_EmptyMovePositionsOnBoard()
+            public void CountFor_5_EmptyMovePositionsOnBoard()
             {
                 var board = new Board(3);
                 int[] positions = { 1, 2, 3, 4 };
@@ -270,7 +270,7 @@ using Xunit;
                 Assert.Equal(expected, actual);
             }
             [Fact]
-            public void CheckFor_7_EmptyPositionOnBoard()
+            public void CountFor_7_EmptyPositionOnBoard()
             {
                 var board = new Board(3);
                 int[] positions = { 3, 4 };
@@ -281,7 +281,7 @@ using Xunit;
                 Assert.Equal(expected, actual);
             }
             [Fact]
-            public void CheckFor_0_EmptyPositionOnBoard()
+            public void CountForNoEmptyPositionOnBoard()
             {
                 var board = new Board(3);
                 int[] positions = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
