@@ -1,5 +1,6 @@
 ﻿    using System;
-    using System.Linq;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TicTacToe
 {
@@ -42,6 +43,22 @@ namespace TicTacToe
             return counter;
         }
 
+        public List<int> GetMovePositions()
+        {
+            char symbol = '1';
+            List<int> emptyPositions = new List<int>();
+            for (int position = 1; position <= GameBoard.Length; position++)
+            {
+                if (GameBoard[position - 1] == symbol)
+                {
+                    emptyPositions.Add(position);
+                }
+                symbol++;
+            }
+            return emptyPositions;
+        }
+
+        
         public char WinningPlayer()
         {
             if (GameBoard[0] == GameBoard[1] && GameBoard[1] == GameBoard[2])
@@ -77,5 +94,6 @@ namespace TicTacToe
         {
             return !(WinningPlayer() == ' ') || CheckDraw();
         }
+
     }
 }

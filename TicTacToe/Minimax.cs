@@ -3,16 +3,16 @@ namespace TicTacToe
 {
     public class Minimax
     {
-        public char Player, Opponent;
-        public Minimax(char player, char opponent)
+        public char AI, Opponent;
+        public Minimax(char ai, char opponent)
         {
-            Player = player;
+            AI = ai;
             Opponent = opponent;
         }
 
         public int Evaluate(Board board)
         {
-            if(board.WinningPlayer() == Player)
+            if(board.WinningPlayer() == AI)
             {
                 return +10;
             } else if (board.WinningPlayer() == Opponent)
@@ -22,29 +22,36 @@ namespace TicTacToe
             return 0;
         }
 
+
         public int Mini_max(Board board, int depth, bool isMax)
         {
             int score = Evaluate(board);
 
             if (score == 10)
                 return score;
+
             if (score == -10)
                 return score;
-            if(board.CheckDraw())
-                return 0;
 
+            if (board.CheckDraw())
+                return 0;
             if (isMax)
             {
                 int best = -1000;
 
+                // getAvailableMopves array
+                // loop through the available moves
+                // makemoves
+
+
                 char symbol = '1';
-                for (int position = 0; position < board.GameBoard.Length; position++)
+                for (int position = 1; position <= board.GetMovePositions().Count; position++)
                 {
-                    if (board.GameBoard[position] == symbol)
+                    if (board.GameBoard[position - 1] == symbol)
                     {
-                        board.GameBoard[position] = Player;
+                        board.MakeMove(AI, position);
                         best = Math.Max(best, Mini_max(board, depth + 1, !isMax));
-                        board.GameBoard[position] = symbol;
+                        board.MakeMove(symbol, position);
                     }
                     symbol++;
                 }
@@ -55,13 +62,13 @@ namespace TicTacToe
                 int best = 1000;
 
                 char symbol = '1';
-                for (int position = 0; position < board.GameBoard.Length; position++)
+                for (int position = 1; position <= board.GetMovePositions().Count; position++)
                 {
-                    if (board.GameBoard[position] == symbol)
+                    if (board.GameBoard[position - 1] == symbol)
                     {
-                        board.GameBoard[position] = Opponent;
+                        board.MakeMove(Opponent, position);
                         best = Math.Min(best, Mini_max(board, depth + 1, !isMax));
-                        board.GameBoard[position] = symbol;
+                        board.MakeMove(symbol, position);
                     }
                     symbol++;
                 }
@@ -71,21 +78,22 @@ namespace TicTacToe
 
         public int FindBestMove(Board board)
         {
-            int bestVal = -1000;
+            int bestScore = -1000;
+
             int bestMove = 0;
 
             char symbol = '1';
-            for (int position = 0; position < board.GameBoard.Length; position++)
+            for (int position = 0; position < board.GetMovePositions().Count; position++)
             {
                 if (board.GameBoard[position] == symbol)
                 {
-                    board.GameBoard[position] = Player;
-                    int moveVal = Mini_max(board, 0, false);
+                    board.GameBoard[position] = AI;
+                    int score = Mini_max(board, 0, false);
                     board.GameBoard[position] = symbol;
-                    if (moveVal > bestVal)
+                    if (score > bestScore)
                     {
                         bestMove = position + 1;
-                        bestVal = moveVal;
+                        bestScore = score;
                     }
                 }
                 symbol++;
@@ -95,3 +103,4 @@ namespace TicTacToe
     }
 
 }
+
