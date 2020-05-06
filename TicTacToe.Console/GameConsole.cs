@@ -38,7 +38,7 @@ namespace TicTacToe.ConsoleGame
                 Colors(ConsoleColor.Yellow, $"Its Player {player.Symbol}'s Turn.");
 
                 GameLoop gameLoop = new GameLoop();
-                gameLoop.Loop(board, validate, player, output, message);
+                gameLoop.Loop(board, validate, player, output, message, new Minimax('X', 'O'), int.Parse(mode));
 
                 if (board.WinningPlayer() == player.Symbol)
                 {

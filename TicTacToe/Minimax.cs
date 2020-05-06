@@ -30,23 +30,45 @@ namespace TicTacToe
         {
             List<int> scores = new List<int>();
             List<int> positions = new List<int>();
-            // get move positions
-            // loop through each move positiona nd make a move
-            //s tore the score and the position
-            foreach(int position in board.GetMovePositions())
+
+            //char board = Board.GetMovePositions();
+
+            foreach (int position in board.GetMovePositions())
             {
-                board.MakeMove(AI, position);
-                int score = Evaluate(board);
+                Board cloneBoard = new Board(3);
+                for (int i = 0; i < board.GameBoard.Length; i++)
+                {
+                    cloneBoard.GameBoard[i] = board.GameBoard[i];
+                }
+                    
+                int score = 0;
+                Player player = new Player(AI);
+
+                cloneBoard.MakeMove(player.Symbol, position);
+                score = score + Evaluate(cloneBoard);
+                player.TogglePlayer();
+
+                if(score == 10)
+                {
+                    return position;
+                }
+
+                foreach (int rem_position in cloneBoard.GetMovePositions())
+                {
+                    cloneBoard.MakeMove(player.Symbol, rem_position);
+                    score = score + Evaluate(cloneBoard);
+
+                    player.TogglePlayer();
+
+                }
                 scores.Add(score);
                 positions.Add(position);
             }
             
-            // get the index of the maximum score
-            // using that index, get the move corresponding
-            // that will be the best move
             int maxScore = scores.Max();
             int indexOfMaxScore = scores.IndexOf(maxScore);
             return positions[indexOfMaxScore];
+
 
         }
 

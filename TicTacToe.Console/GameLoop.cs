@@ -3,27 +3,30 @@ namespace TicTacToe.ConsoleGame
 {
     public class GameLoop
     {
-        public void Loop(Board board, Validation validate, Player player, Output output, Message message)
+        public void Loop(Board board, Validation validate, Player player, Output output, Message message, Minimax minimax, int mode)
         {
             while (!board.IsGameOver())
             {
-                string input = Console.ReadLine();
+                int input;
+                if(mode == 2 && player.Symbol == minimax.AI) {
 
-                if (!validate.IsValid(board, input))
+                    input = minimax.FindBestMove(board);
+                }
+                else
                 {
-                    GameConsole.Colors(ConsoleColor.Red, validate.Message);
-                    output.DisplayArray(board.GameBoard);
-                    continue;
+                    input = int.Parse(Console.ReadLine());
+                    if (!validate.IsValid(board, input.ToString()))
+                    {
+                        GameConsole.Colors(ConsoleColor.Red, validate.Message);
+                        output.DisplayArray(board.GameBoard);
+                        continue;
+                    }
+
                 }
 
-                board.MakeMove(player.Symbol, int.Parse(input));
-
+                board.MakeMove(player.Symbol, input);
+                
                 output.DisplayArray(board.GameBoard);
-                Minimax minimax = new Minimax('X', 'O');
-
-                //Console.WriteLine("----------------------1");
-                //Console.WriteLine(minimax.Evaluate(board));
-                //Console.WriteLine("----------------------2");
 
                 if (board.IsGameOver())
                 {
