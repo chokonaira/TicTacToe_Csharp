@@ -7,14 +7,14 @@ namespace TicTacToe.ConsoleGame
         {
             while (!board.IsGameOver())
             {
-                int input;
+                string input;
                 if(mode == 2 && player.Symbol == minimax.AI) {
 
-                    input = minimax.FindBestMove(board);
+                    input = minimax.FindBestMove(board, player).ToString();
                 }
                 else
                 {
-                    input = int.Parse(Console.ReadLine());
+                    input = Console.ReadLine();
                     if (!validate.IsValid(board, input.ToString()))
                     {
                         GameConsole.Colors(ConsoleColor.Red, validate.Message);
@@ -24,7 +24,7 @@ namespace TicTacToe.ConsoleGame
 
                 }
 
-                board.MakeMove(player.Symbol, input);
+                board.MakeMove(player.Symbol, int.Parse(input));
                 
                 output.DisplayArray(board.GameBoard);
 

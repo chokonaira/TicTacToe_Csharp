@@ -24,6 +24,11 @@ namespace TicTacToe
             }
         }
 
+        public char GetSymbol(int position)
+        {
+            return GameBoard[position - 1];
+        }
+
         public void MakeMove(char symbol, int position)
         {
             GameBoard[position - 1] = symbol;

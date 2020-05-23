@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace TicTacToe
 {
@@ -13,70 +11,78 @@ namespace TicTacToe
             Opponent = opponent;
         }
 
-        public int Evaluate(Board board)
+        public int Evaluate(Board board, int depth = 0)
         {
             if(board.WinningPlayer() == AI)
             {
-                return 10;
+                return 10 - depth;
             } else if (board.WinningPlayer() == Opponent)
             {
-                return -10;
+                return depth - 10;
             }
             return 0;
         }
 
-
-        public int Mini_max(Board board)
+         public int Mini_max(Board board, Player player, int depth)
         {
-            List<int> scores = new List<int>();
-            List<int> positions = new List<int>();
+            int score = Evaluate(board, depth);
 
-            //char board = Board.GetMovePositions();
+            if (score != 0)
+                return score;
 
+            if(board.CheckDraw())
+                return 0;
+
+            if (player.Symbol == AI)
+            {
+                int best = -1000;
+                foreach (int position in board.GetMovePositions())
+                {
+                    char symbol = board.GetSymbol(position);
+                    MoveTogglePlayer(board, AI, position, player);
+                    best = Math.Max(best, Mini_max(board, player, depth + 1));
+                    MoveTogglePlayer(board, symbol, position, player);
+                }
+                return best;
+            }
+            else
+            {
+                int best = 1000;
+                foreach (int position in board.GetMovePositions())
+                {
+                    char symbol = board.GetSymbol(position);
+                    MoveTogglePlayer(board, Opponent, position, player);
+                    best = Math.Min(best, Mini_max(board, player, depth + 1));
+                    MoveTogglePlayer(board, symbol, position, player);
+                }
+                return best;
+            }
+        }
+
+        public void MoveTogglePlayer(Board board, char symbol, int position, Player player)
+        {
+            board.MakeMove(symbol, position);
+            player.TogglePlayer();
+        }
+
+        public int FindBestMove(Board board, Player player)
+        {
+            int bestVal = -1000;
+            int bestMove = 0;
             foreach (int position in board.GetMovePositions())
             {
-                Board cloneBoard = new Board(3);
-                for (int i = 0; i < board.GameBoard.Length; i++)
+                char symbol = board.GetSymbol(position);
+                MoveTogglePlayer(board, AI, position, player);
+                int moveVal = Mini_max(board, player, 0);
+                MoveTogglePlayer(board, symbol, position, player);
+                if (moveVal > bestVal)
                 {
-                    cloneBoard.GameBoard[i] = board.GameBoard[i];
+                    bestMove = position;
+                    bestVal = moveVal;
                 }
-                    
-                int score = 0;
-                Player player = new Player(AI);
-
-                cloneBoard.MakeMove(player.Symbol, position);
-                score = score + Evaluate(cloneBoard);
-                player.TogglePlayer();
-
-                if(score == 10)
-                {
-                    return position;
-                }
-
-                foreach (int rem_position in cloneBoard.GetMovePositions())
-                {
-                    cloneBoard.MakeMove(player.Symbol, rem_position);
-                    score = score + Evaluate(cloneBoard);
-
-                    player.TogglePlayer();
-
-                }
-                scores.Add(score);
-                positions.Add(position);
             }
-            
-            int maxScore = scores.Max();
-            int indexOfMaxScore = scores.IndexOf(maxScore);
-            return positions[indexOfMaxScore];
-
-
-        }
-
-        public int FindBestMove(Board board)
-        {
-           return Mini_max(board);
+            return bestMove;
         }
     }
-
 }
 

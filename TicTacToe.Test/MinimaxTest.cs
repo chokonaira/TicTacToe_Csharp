@@ -59,11 +59,12 @@ namespace TicTacToe.Test
         public void CheckBoardForBestWinningMoveIndex9()
         {
             Board board = new Board(3);
+            Player player = new Player('X');
             Minimax minimax = new Minimax('X', 'O');
             int[] positions = { 1, 2, 3, 4, 5, 6, 7, 8 };
             char[] symbols = { 'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O' };
             Helper.FillBoard(board, positions, symbols);
-            int actual = minimax.FindBestMove(board);
+            int actual = minimax.FindBestMove(board, player);
             int expected = 9;
             Assert.Equal(expected, actual);
         }
@@ -75,11 +76,12 @@ namespace TicTacToe.Test
         public void CheckBoardForBestWinningMoveIndex3()
         {
             Board board = new Board(3);
+            Player player = new Player('X');
             Minimax minimax = new Minimax('X', 'O');
             int[] positions = { 1, 2, 4, 5, 6, 7, 8, 9 };
             char[] symbols = { 'X', 'X', 'O', 'X', 'X', 'X', 'O', 'O' };
             Helper.FillBoard(board, positions, symbols);
-            int actual = minimax.FindBestMove(board);
+            int actual = minimax.FindBestMove(board, player);
             int expected = 3;
             Assert.Equal(expected, actual);
         }
@@ -91,11 +93,12 @@ namespace TicTacToe.Test
         public void CheckBoardForWinInMultipleOptions()
         {
             Board board = new Board(3);
+            Player player = new Player('X');
             Minimax minimax = new Minimax('X', 'O');
             int[] positions = { 1, 3, 4, 6, 7, 8, 9 };
             char[] symbols = { 'O', 'X', 'X', 'X', 'X', 'O', 'O' };
             Helper.FillBoard(board, positions, symbols);
-            int actual = minimax.FindBestMove(board);
+            int actual = minimax.FindBestMove(board, player);
             int expected = 5;
             Assert.Equal(expected, actual);
         }
@@ -107,11 +110,12 @@ namespace TicTacToe.Test
         public void CheckBoardForToBlockOpponentsWinningOption()
         {
             Board board = new Board(3);
+            Player player = new Player('X');
             Minimax minimax = new Minimax('X', 'O');
             int[] positions = { 1, 3, 4, 5, 6, 7, 9 };
             char[] symbols = { 'O', 'O', 'O', 'X', 'X', 'X', 'O' };
             Helper.FillBoard(board, positions, symbols);
-            int actual = minimax.FindBestMove(board);
+            int actual = minimax.FindBestMove(board, player);
             int expected = 2;
             Assert.Equal(expected, actual);
         }
@@ -122,14 +126,15 @@ namespace TicTacToe.Test
         [Fact]
         public void CheckBoardForWinningPositionForBothPlayers()
         {
-            Board board = new Board(3);
-            Minimax minimax = new Minimax('X', 'O');
-            int[] positions = { 1, 3, 4, 5, 6, 7, 9 };
-            char[] symbols = { 'O', 'O', 'O', 'X', 'X', 'X', 'X' };
-            Helper.FillBoard(board, positions, symbols);
-            int actual = minimax.FindBestMove(board);
-            int expected = 8;
-            Assert.Equal(expected, actual);
+           Board board = new Board(3);
+           Player player = new Player('X');
+           Minimax minimax = new Minimax('X', 'O');
+           int[] positions = { 1, 3, 4, 5, 6, 7, 9 };
+           char[] symbols = { 'O', 'O', 'O', 'X', 'X', 'X', 'X' };
+           Helper.FillBoard(board, positions, symbols);
+           int actual = minimax.FindBestMove(board, player);
+           int expected = 8;
+           Assert.Equal(expected, actual);
         }
 
         // _ _ _
@@ -138,29 +143,49 @@ namespace TicTacToe.Test
         [Fact]
         public void CheckEmptyBoardForInitailOptimalMove()
         {
-            Board board = new Board(3);
-            Minimax minimax = new Minimax('X', 'O');;
-            int actual = minimax.FindBestMove(board);
-            //get available move on board
-            int expected = 1;
-            Assert.Equal(expected, actual);
+           Board board = new Board(3);
+           Player player = new Player('X');
+           Minimax minimax = new Minimax('X', 'O');;
+           int actual = minimax.FindBestMove(board, player);
+           //get available move on board
+           int expected = 1;
+           Assert.Equal(expected, actual);
         }
 
-        // X - -
+        // _ X O
+        // _ _ X
         // O O X
-        // X - -
         [Fact]
         public void CheckBoardForBestMoveThatMustResultToASubsiquentWinninMove()
         {
-            Board board = new Board(3);
-            int[] positions = { 1, 4, 5, 6, 7};
-            char[] symbols = { 'X', 'O', 'O', 'X', 'X' };
-            Minimax minimax = new Minimax('X', 'O');
-            Helper.FillBoard(board, positions, symbols);
-            int actual = minimax.FindBestMove(board);
-            int expected = 3;
+           Board board = new Board(3);
+           Player player = new Player('X');
+           int[] positions = { 2, 3, 6, 7,8,9 };
+           char[] symbols = { 'X', 'O', 'X', 'O', 'O','X' };
+           Minimax minimax = new Minimax('X', 'O');
+           Helper.FillBoard(board, positions, symbols);
+           int actual = minimax.FindBestMove(board, player);
+           int expected = 5;
 
-            Assert.Equal(expected, actual);
+           Assert.Equal(expected, actual);
+
+        }
+
+        // X X O
+        // 4 O 6
+        // 7 8 9
+        [Fact]
+        public void CheckBoardForBestBlockingMove()
+        {
+           Board board = new Board(3);
+           Player player = new Player('X');
+           int[] positions = { 1, 2, 3, 5 };
+           char[] symbols = { 'X', 'X', 'O', 'O' };
+           Minimax minimax = new Minimax('X', 'O');
+           Helper.FillBoard(board, positions, symbols);
+           int actual = minimax.FindBestMove(board, player);
+           int expected = 7;
+           Assert.Equal(expected, actual);
 
         }
     }
