@@ -27,5 +27,33 @@
                 player.TogglePlayer();
                 Assert.Equal('O', player.Symbol);
             }
+            //[Fact]
+            //public void CheckWinnigPlayerX()
+            //{
+            //    var board = new Board(3);
+            //    int[] positions = { 1, 5, 9 };
+            //    char[] symbols = { 'X', 'X', 'X' };
+            //    Helper.FillBoard(board, positions, symbols);
+            //    bool actual = board.CheckWin();
+            //    Assert.True(actual);
+
+            //    Player player = new Player('X');
+            //    player.WinningPlayer();
+            //    Assert.Equal('X', player.WinningPlayer());
+            //}
+            //[Fact]
+            //public void CheckWinnigPlayerO()
+            //{
+            //    var board = new Board(3);
+            //    int[] positions = { 1, 5, 9 };
+            //    char[] symbols = { 'O', 'O', 'O' };
+            //    Helper.FillBoard(board, positions, symbols);
+            //    bool actual = board.CheckWin();
+            //    Assert.True(actual);
+
+            //    Player player = new Player('O');
+            //    player.WinningPlayer();
+            //    Assert.Equal('O', player.WinningPlayer());
+            //}
         }
     }

@@ -14,12 +14,22 @@ namespace TicTacToe.ConsoleGame
 
                 Validation validate = new Validation();
 
-                Player player = new Player('X');
-
                 IConsole console = new ConsoleWrapper();
                 Output output = new Output(console);
 
                 Colors(ConsoleColor.Green, message.WelcomeMassage);
+
+                Colors(ConsoleColor.Green, message.GameMode);
+
+                string mode = Console.ReadLine();
+
+                if (!validate.CheckGameMode(mode))
+                {
+                    Colors(ConsoleColor.Red, validate.Message);
+                    continue;
+                }
+
+                Player player = new Player('X');
 
                 output.DisplayArray(board.GameBoard);
 
@@ -28,9 +38,9 @@ namespace TicTacToe.ConsoleGame
                 Colors(ConsoleColor.Yellow, $"Its Player {player.Symbol}'s Turn.");
 
                 GameLoop gameLoop = new GameLoop();
-                gameLoop.Loop(board, validate, player, output, message);
+                gameLoop.Loop(board, validate, player, output, message, new Minimax('X', 'O'), int.Parse(mode));
 
-                if (board.CheckWin())
+                if (board.WinningPlayer() == player.Symbol)
                 {
                     Colors(ConsoleColor.Green, message.SetWinMessage(player.Symbol));
                 }

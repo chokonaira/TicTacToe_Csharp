@@ -1,5 +1,6 @@
 ﻿    using System;
-    using Xunit;
+using System.Collections.Generic;
+using Xunit;
 
     namespace TicTacToe.Test
     {
@@ -13,6 +14,18 @@
                 }
             }
         }
+
+        //internal static class HelperList
+        //{
+        //    public static void FillBoard(Board board, List<int> positions, List<char> symbols)
+        //    {
+        //        for (int i = 0; i < positions.Length; i++)
+        //        {
+        //            board.MakeMove(symbols[i], positions[i]);
+        //        }
+        //    }
+        //}
+
 
         public class BoardTest
         {
@@ -67,8 +80,8 @@
                 int[] positions = { 1, 5, 9 };
                 char[] symbols = { 'X', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
 
             }
 
@@ -79,8 +92,8 @@
                 int[] positions = { 1, 4, 7 };
                 char[] symbols = { 'O', 'O', 'O' };
                 Helper.FillBoard(board, positions, symbols);
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('O', actual);
             }
 
             [Fact]
@@ -90,8 +103,8 @@
                 int[] positions = { 3, 5, 7 };
                 char[] symbols = { 'X', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
 
             }
 
@@ -102,8 +115,8 @@
                 int[] positions = { 1, 5, 9 };
                 char[] symbols = { 'X','X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
             }
 
             [Fact]
@@ -148,9 +161,9 @@
                 int[] positions = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
                 char[] symbols = { 'O', 'O', 'X', 'X', 'X', 'O', 'O', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
-            
+
                 Assert.Equal(0, board.GetAvailableMoves());
-            
+
                 board.InitializeBoard();
                 Assert.Equal(9, board.GetAvailableMoves());
             
@@ -169,8 +182,8 @@
                 char[] symbols = { 'X', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
 
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
                 bool expected = board.PlayAgain("y");
                 Assert.True(expected);
             }
@@ -197,8 +210,8 @@
                 char[] symbols = { 'X', 'X', 'X' };
                 Helper.FillBoard(board, positions, symbols);
 
-                bool actual = board.CheckWin();
-                Assert.True(actual);
+                char actual = board.WinningPlayer();
+                Assert.Equal('X', actual);
                 bool expected = board.PlayAgain("uuu");
                 Assert.False(expected);
             }
@@ -236,6 +249,47 @@
                 Helper.FillBoard(board, positions, symbols);
                 bool actual = board.IsGameOver();
                 Assert.True(actual);
+            }
+            [Fact]
+            public void CheckForAllEmptyMovePositionsOnBoard()
+            {
+                var board = new Board(3);
+                List<int> actual = board.GetMovePositions();
+                int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                Assert.Equal(expected, actual);
+            }
+            [Fact]
+            public void CountFor_5_EmptyMovePositionsOnBoard()
+            {
+                var board = new Board(3);
+                int[] positions = { 1, 2, 3, 4 };
+                char[] symbols = { 'X', 'O', 'X', 'O' };
+                Helper.FillBoard(board, positions, symbols);
+                List<int> actual = board.GetMovePositions();
+                int[] expected = { 5, 6, 7, 8, 9 };
+                Assert.Equal(expected, actual);
+            }
+            [Fact]
+            public void CountFor_7_EmptyPositionOnBoard()
+            {
+                var board = new Board(3);
+                int[] positions = { 3, 4 };
+                char[] symbols = { 'X', 'O' };
+                Helper.FillBoard(board, positions, symbols);
+                List<int> actual = board.GetMovePositions();
+                int[] expected = { 1, 2, 5, 6, 7, 8, 9 };
+                Assert.Equal(expected, actual);
+            }
+            [Fact]
+            public void CountForNoEmptyPositionOnBoard()
+            {
+                var board = new Board(3);
+                int[] positions = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                char[] symbols = { 'X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X' };
+                Helper.FillBoard(board, positions, symbols);
+                List<int> actual = board.GetMovePositions();
+                int[] expected = { };
+                Assert.Equal(expected, actual);
             }
         }
     }
